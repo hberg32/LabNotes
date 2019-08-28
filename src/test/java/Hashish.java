@@ -5,6 +5,7 @@ import java.util.HashMap;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
+@SuppressWarnings("WeakerAccess") //Shut up about xxx can be package-private
 public class Hashish {
     @Test
     public void theTest() {
@@ -23,7 +24,11 @@ public class Hashish {
 
         @Override
         public boolean equals(Object obj) {
-            return id.equals(obj);
+            if(obj instanceof thing) {
+                return id.equals(obj);
+            }
+
+            return false;
         }
 
         @Override

@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
+@SuppressWarnings("WeakerAccess") //Shut up about xxx can be package-private
 class StaticClass  {
     public static String aStaticMethod() {
         return "StaticClass.aStaticMethod";
@@ -12,6 +13,7 @@ class StaticClass  {
         return "StaticClass.aNonStaticMethod";
     }
 }
+
 class InstanceClass extends StaticClass {
     //@Override   <-- this LOOKs valid but isn't  You can only hide a superclass static not override it
     public static String aStaticMethod() {
@@ -23,7 +25,9 @@ class InstanceClass extends StaticClass {
         return "InstanceClass.aNonStaticMethod";
     }
 }
+
 public class StaticMethodHiding {
+    @SuppressWarnings("AccessStaticViaInstance") //shut up about static method access, that's the point here
     @Test
     public void proof() {
         StaticClass staticClass = new StaticClass();

@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 @SuppressWarnings("WeakerAccess") //Shut up about xxx can be package-private
-public class Hashish {
+public class HashCodesDontAffectIdentity {
     @Test
     public void theTest() {
         HashMap<thing, String> theMap = new HashMap<>();
